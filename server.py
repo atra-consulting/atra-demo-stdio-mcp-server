@@ -8,7 +8,7 @@
 Every JSON-RPC frame crossing the wire is written to a logfile, labelled by
 direction and message type, so a workshop audience can watch the protocol live:
 
-    tail -f ~/Desktop/demo-mcp-server/mcp-demo.log
+    tail -f mcp-demo.log      (from the repo root)
 
 Environment variables:
     MCP_DEMO_LOG          logfile path (default: mcp-demo.log next to this file)

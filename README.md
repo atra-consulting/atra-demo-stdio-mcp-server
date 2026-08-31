@@ -6,22 +6,27 @@ A small Model Context Protocol server for demo purposes. Speaks JSON-RPC over
 Built with the official Python SDK (`mcp` 2.1+, `MCPServer` API). Dependencies
 are declared inline (PEP 723), so `uv` installs them on the fly — no venv setup.
 
+> Throughout this README, `/path/to/atra-demo-stdio-mcp-server` stands for wherever you
+> cloned this repo — substitute your own path. MCP hosts need it **absolute**
+> (see [Connection closed](#if-you-get-connection-closed) for why); `pwd` in the
+> repo root prints it.
+
 ## Start it in MCP Inspector
 
 Use the launcher — it resolves `uv` and the script to absolute paths itself, so
 it works no matter what working directory or PATH the Inspector runs with:
 
 ```bash
-npx @modelcontextprotocol/inspector /Users/benjamin/Desktop/demo-mcp-server/run-server.sh
+npx @modelcontextprotocol/inspector /path/to/atra-demo-stdio-mcp-server/run-server.sh
 ```
 
 Or launch the Inspector bare (`npx @modelcontextprotocol/inspector`) and fill in:
 
-| Field     | Value                                                  |
-| --------- | ------------------------------------------------------ |
-| Transport | `STDIO`                                                |
-| Command   | `/Users/benjamin/Desktop/demo-mcp-server/run-server.sh` |
-| Arguments | *(leave empty)*                                        |
+| Field     | Value                                                 |
+| --------- | ----------------------------------------------------- |
+| Transport | `STDIO`                                               |
+| Command   | `/path/to/atra-demo-stdio-mcp-server/run-server.sh`   |
+| Arguments | *(leave empty)*                                       |
 
 Then hit **Connect** → the Tools tab fills up.
 
@@ -40,7 +45,7 @@ To see the real error instead of the generic one, run the same command in a
 terminal — it prints the underlying failure:
 
 ```bash
-npx @modelcontextprotocol/inspector --cli /Users/benjamin/Desktop/demo-mcp-server/run-server.sh --method tools/list
+npx @modelcontextprotocol/inspector --cli /path/to/atra-demo-stdio-mcp-server/run-server.sh --method tools/list
 ```
 
 ## Watching the protocol (for the workshop)
@@ -49,7 +54,7 @@ Every JSON-RPC frame crossing the wire is teed into a logfile, in both
 directions, labelled by message type. Open a second terminal and run:
 
 ```bash
-tail -f /Users/benjamin/Desktop/demo-mcp-server/mcp-demo.log
+tail -f /path/to/atra-demo-stdio-mcp-server/mcp-demo.log   # or just `tail -f mcp-demo.log` from the repo root
 ```
 
 Then drive the server from the Inspector and the traffic scrolls past live:
@@ -169,7 +174,7 @@ there. The server therefore:
 ## Run it manually
 
 ```bash
-uv run /Users/benjamin/Desktop/demo-mcp-server/server.py
+uv run /path/to/atra-demo-stdio-mcp-server/server.py   # or `uv run server.py` from the repo root
 ```
 
 A healthy stdio server prints **nothing** and just waits on stdin. Any stray
