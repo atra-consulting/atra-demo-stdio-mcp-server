@@ -1,0 +1,9 @@
+# Runtime protocol trace (regenerated on every session)
+mcp-demo.log
+*.log
+
+# Machine-specific Claude Code settings
+.claude/settings.local.json
+
+# macOS
+.DS_Store
